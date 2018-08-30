@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome to the best News Review website </title>
+        {% endif %}
+    </head>
+    <body>
+        <!-- Entertainment news section -->
+        <h3>Entertainment News</h3>
+        <ul>
+            {% for entertainment_news in entertainment %}
+                <li>{{ entertainment_news.title }}</li>
+            {% endfor %}   
+        </ul>
+    </body>
+</html>

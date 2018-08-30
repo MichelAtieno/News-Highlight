@@ -1,5 +1,5 @@
 from app import app
-from urllib.request,json
+import urllib.request,json
 from .models import news
 
 News = news.News
@@ -21,36 +21,35 @@ def get_news(category):
         get_news_response = json.loads(get_news_data)
 
         news_results = None
-
-        if get_news_response['results']
-            news_results_list = get_news_response['results']
+        
+        if get_news_response['sources']:
+            news_results_list = get_news_response['sources']
             news_results = process_results(news_results_list)
 
     return news_results
 
-    def process_results(news_list):
-        '''
-        Function that processes the news result and transform them to a list of Objects
+def process_results(news_list):
+    '''
+     Function that processes the news result and transform them to a list of Objects
 
-        Args:
-            news_list: A list of dictionaries that contain news details
+    Args:
+    news_list: A list of dictionaries that contain news details
 
-        Returns:
-            news_results: A list of news objects
-        '''
-        news_results = []
-        for news_item in news_list:
-            source = news_item.get('source')
-            author = news_item.get('author')
-            title = news_item.get('original_title')
-            description = news_item.get('description')
-            url = news_item('url')
-            urlToImage = news_item('urlToImage ')
-            publishedAt = news_item('publishedAt')
+    Returns:
+        news_results: A list of news objects
+    '''
+    news_results = []
+    for news_item in news_list:
+        id = news_item.get('id')
+        name = news_item.get('name')
+        description = news_item.get('description')
+        url = news_item('url')
+        category = news_item('category')
+        country = news_item('country')
 
-            if urlToImage:
-                news_object = News(source,author,title,description,url,urlToImage,publishedAt)
-                news_results.append(news_object)
+        if url:
+            news_object = News(id, name, description, url, category, country)
+            news_results.append(news_object)
 
     return news_results        
 

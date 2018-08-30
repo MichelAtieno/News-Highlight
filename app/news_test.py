@@ -10,7 +10,7 @@ class NewsTest(unittest.TestCase):
         '''
         Set up method that will run before every test
         '''
-        self.new_news = News('USA Today','Cydney Henderson','Kanye West "properly" apologizes for slavery comment, answers Kimmel question about Trump','Kanye West got emotional while apologizing for his controversial slavery comments and also gave a long-awaited answer to Jimmy Kimmels question.','https://www.usatoday.com/story/life/people/2018/08/29/kanye-west-apologizes-slavery-remark-answers-kimmel-question/1139792002/','https://www.gannett-cdn.com/-mm-/b2b05a4ab25f4fca0316459e1c7404c537a89702/c=0-0-1365-768/local/-/media/2018/08/01/USATODAY/usatsports/247WallSt.com-247WS-483194-imageforentry482.jpg?width=3200&height=1680&fit=crop','2018-08-30T02:38:00Z')
+        self.new_news = News('usa-today','USA Today','Former Balch Springs Officer Roy Oliver, 38, was convicted of fatally shooting Jordan Edwards, 15, after responding to the party.','https://www.usatoday.com/story/news/nation-now/2018/08/29/dallas-area-cop-sentenced-15-years-fatal-shooting-black-teen/1141400002/','general', 'us')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_news,News))
