@@ -1,19 +1,67 @@
+{% import 'macros.html' as macro %}
+
+{% block content %}
+
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best News Review website </title>
-        {% endif %}
+    <head>   
     </head>
     <body>
-        <!-- Entertainment news section -->
-        <h3>Entertainment News</h3>
-        <ul>
-            {% for entertainment_news in entertainment %}
-                <li>{{ entertainment_news.title }}</li>
-            {% endfor %}   
-        </ul>
+        <div class='container'>
+           <!-- news section -->
+           <h1>News Highlights</h1>
+
+           <div class='row'>
+                <div class="col-md-12">
+                    <h3>General News</h3>
+                </div>
+                {{ macro.news_categories(general) }}
+            </div>
+
+           <div class='row'>
+                <div class="col-md-12">
+                    <h3>Business News</h3>
+                </div>
+                {{ macro.news_categories(business) }}
+            </div>
+
+           <div class='row'>
+               <div class="col-md-12">
+                   <h3>Entertainment News</h3>
+               </div>
+               {{ macro.news_categories(entertainment) }}
+           </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <h3>Health News</h3>
+                </div>
+                    {{ macro.news_categories(health) }}
+            </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <h3>Science News</h3>
+                </div>
+                {{ macro.news_categories(science) }}
+            </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <h3>Sports News</h3>
+                </div>
+                {{ macro.news_categories(sports) }}
+            </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <h3>Technology News</h3>
+                </div>
+                {{ macro.news_categories(technology) }}
+            </div>
+        </div>
+      
+        
     </body>
 </html>
+
+{% endblock%}

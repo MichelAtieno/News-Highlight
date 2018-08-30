@@ -11,9 +11,9 @@ def index():
     '''
 
     #Getting news
-    business_news = get_news('business')
-    entertainment_news = get_news('entertainment')
     general_news = get_news('general')
+    business_news = get_news('business')
+    entertainment_news = get_news('entertainment')  
     health_news = get_news('health')
     science_news = get_news('science')
     sports_news = get_news('sports')
@@ -21,5 +21,5 @@ def index():
 
 
     title = 'Get the latest news in the World'
-    return render_template('index.html', title = title, business = business_news, entertainment = entertainment_news, general = general_news, health = health_news, science = science_news, sports= sports_news,technology = technology_news )
+    return render_template('index.html', title = title, general = general_news, business = business_news, entertainment = entertainment_news, health = health_news, science = science_news, sports= sports_news,technology = technology_news )
 

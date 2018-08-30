@@ -19,34 +19,26 @@ def get_news(category):
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
         get_news_response = json.loads(get_news_data)
-
         news_results = None
         
         if get_news_response['sources']:
-            news_results_list = get_news_response['sources']
-            news_results = process_results(news_results_list)
-
+            news_results = process_results(get_news_response['sources'])
+    
     return news_results
 
 def process_results(news_list):
     '''
-     Function that processes the news result and transform them to a list of Objects
-
-    Args:
-    news_list: A list of dictionaries that contain news details
-
-    Returns:
-        news_results: A list of news objects
+    Function that processes json results
     '''
     news_results = []
     for news_item in news_list:
         id = news_item.get('id')
         name = news_item.get('name')
         description = news_item.get('description')
-        url = news_item('url')
-        category = news_item('category')
-        country = news_item('country')
-
+        url = news_item['url']
+        category = news_item['category']
+        country = news_item['country']
+        print(url)
         if url:
             news_object = News(id, name, description, url, category, country)
             news_results.append(news_object)
