@@ -1,5 +1,5 @@
 import unittest
-from models import news
+from .models import news
 News = news.News
 
 class NewsTest(unittest.TestCase):
@@ -17,4 +17,3 @@ class NewsTest(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    
