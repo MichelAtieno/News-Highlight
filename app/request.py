@@ -38,7 +38,7 @@ def process_results(news_list):
         url = news_item['url']
         category = news_item['category']
         country = news_item['country']
-        print(url)
+        #print(url)
         if url:
             news_object = News(id, name, description, url, category, country)
             news_results.append(news_object)
