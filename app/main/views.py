@@ -1,9 +1,10 @@
 from flask import render_template, redirect, url_for, request
-from app import app
-from .request import get_news, get_articles, search_articles
+from . import main
+from ..request import get_news, get_articles, search_articles
+from ..models import Articles
 
 #Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -23,7 +24,7 @@ def index():
     title = 'Get the latest news in the World'
     return render_template('index.html', title = title, general = general_news, business = business_news, entertainment = entertainment_news, health = health_news, science = science_news, sports= sports_news,technology = technology_news )
 
-@app.route('/articles/<source_id>&<int:per_page>')
+@main.route('/articles/<source_id>&<int:per_page>')
 def articles(source_id,per_page):
     '''
     Function that returns articles
@@ -33,7 +34,7 @@ def articles(source_id,per_page):
     title = f'{source_id} | ARTICLES ' 
     return render_template('articles.html', title= title, name=source_id, all_news = news_source)
 
-@app.route('/search/<topic>')
+@main.route('/search/<topic>')
 def search(topic):
     '''
     Function that returns result of search topic
