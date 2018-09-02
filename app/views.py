@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, request
 from app import app
-from .request import get_news, get_articles
+from .request import get_news, get_articles, search_articles
 
 #Views
 @app.route('/')
@@ -32,4 +32,18 @@ def articles(source_id,per_page):
     news_source = get_articles(source_id, per_page)
     title = f'{source_id} | ARTICLES ' 
     return render_template('articles.html', title= title, name=source_id, all_news = news_source)
+
+@app.route('/search/<topic>')
+def search(topic):
+    '''
+    Function that returns result of search topic
+    '''
+    per_page = 40
+    search_name = topic.split(' ')
+    search_name_format = "+".join(search_name)
+    search_all = search_articles(per_page,search_name_format)
+
+    title = f'search results for {search_name_format}'
+
+    return render_template('search.html', title = title, all_news = search_all)
 

@@ -12,6 +12,8 @@ api_key = app.config['NEWS_API_KEY']
 base_url = app.config['NEWS_API_BASE_URL']
 #Getting the articles url
 articles_url = app.config['ARTICLES_BASE_URL']
+#Getting the search url
+articles_search_url = app.config ['ARTICLES_SEARCH_URL']
 
 def get_news(category):
     '''
@@ -86,3 +88,19 @@ def process_articles(all_articles):
             articles_list.append(article_object)
             
     return articles_list
+
+def search_articles(per_page, query):
+    '''
+    Function that looks for articles
+    '''
+    search_articles_url = articles_search_url.format(query, per_page, api_key)
+    with urllib.request.urlopen(search_articles_url) as url:
+        search_articles_data = url.read()
+        search_articles_response = json.loads(search_articles_data)
+
+        search_articles_results = []
+
+        if search_articles_response['articles']:
+            search_articles_results = process_articles(search_articles_response['articles'])
+
+    return search_articles_results
