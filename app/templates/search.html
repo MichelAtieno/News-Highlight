@@ -1,0 +1,28 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> {{title}} </h1>
+        </div>
+    </div>
+    <div class="row">
+        {% for article in all_news %}
+        <div class="col-md-3">
+            <a href={{article.url}} target="_blank">
+                <img src={{article.urlToImage}} alt="Article Image">
+            </a>
+            <div>
+                <h4> {{article.title}} </h4>
+                <p> {{article.author}} </p>
+                <p>Posted on {{article.publishedAt}}</p>
+                <hr>
+                <p> {{article.description}}...
+                    <a href={{article.url}} target="_blank">Show More</a>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock%}
