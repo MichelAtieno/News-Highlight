@@ -1,0 +1,12 @@
+.source_category {
+    box-sizing: border-box;
+    border: 20px solid black;
+}
+
+#source_business {
+    font-weight: bolder; 
+}
+
+.header {
+    text-decoration: underline;
+}
