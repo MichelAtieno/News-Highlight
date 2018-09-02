@@ -4,27 +4,47 @@
 <!DOCTYPE html>
     <head>
          <style>
+             body {
+                background-color: tan;
+                background-size: cover;
+             }
             .container-fluid {
                 font-weight: bolder;
-            }
-            h1 {
-                text-decoration: underline;
             }
             .row {
                 display: flex;
                 display: column;
             }
             .col-md-6 {
-                margin-left: 5px;
-                margin-bottom: 5px;
                 font-weight: bolder;
             }
             img {
-                height: 400px;
+                height: 300px;
                 width: 500px;
+            }
+            .header {
+                background-color: burlywood;
             }
             h1 {
                 text-transform: uppercase;
+                margin-left: 400px;
+                font-size: 70px;
+                color:  rgb(78, 91, 99);
+            }
+            .articles {
+               box-sizing: border-box;
+               border: 5px solid silver;
+               margin: 10px; 
+               box-shadow: 5px 5px 5px 5px rgb(78, 91, 99);
+               font-size: 18px;
+               background-color: burlywood;
+               height: 330px;
+               width: 1150px;
+               margin-left: 50px;
+               font-style: italic;
+            }
+            h4 {
+                text-decoration: underline;
             }
         </style>
     </head>
@@ -34,7 +54,7 @@
         <div class="col-md-12 header">
             <h1> {{ name }} </h1>
         </div>
-       </div>
+        </div>
        {% for article in all_news %}
       <div class="row articles">
         <div class="col-md-6 article_details">
@@ -43,19 +63,18 @@
             </a>
         </div>
         <div class='col-md-6 article_details'>
-                <h4> {{article.title}} </h4>
-                <br>
+                <h4>
+                    <a href={{article.url}}> {{article.title}} </a>
+                </h4>
+                <p>Posted on: {{article.publishedAt}}</p>
                 <p>{{article.author}}</p>
-                <br>
-                <p>Posted on {{article.publishedAt}}</p>
-                <br>
                 <p>{{article.description}}
                     <a href={{article.url}} target="_blank">Read More</a>
                 </p>
         </div>
                 
     </div>
- </div>
+    </div>
 
         {% endfor %}
 
