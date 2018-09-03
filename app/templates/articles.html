@@ -8,6 +8,7 @@
              body {
                 background-color: tan;
                 background-size: cover;
+                font-family: Segoe UI;
              }
             .container-fluid {
                 font-weight: bolder;
@@ -30,7 +31,12 @@
                 text-transform: uppercase;
                 margin-left: 400px;
                 font-size: 70px;
-                color:  rgb(78, 91, 99);
+                border: 10px solid tan;
+                width: 400px;
+                font-family: Cochin;
+                font-style: italic;
+                color: tan;
+                background-color: antiquewhite;
             }
             .articles {
                box-sizing: border-box;
@@ -39,17 +45,26 @@
                box-shadow: 5px 5px 5px 5px rgb(78, 91, 99);
                font-size: 18px;
                background-color: burlywood;
-               height: 330px;
-               width: 1150px;
-               margin-left: 50px;
+               height: 380px;
+               width: 1100px;
+               margin-left: 20px;
                font-style: italic;
             }
             h4 {
                 text-decoration: underline;
+                color: darkblue;
+                font-size: 18px;
+                font-weight: bolder;
             }
             #date {
                 text-decoration: underline;
-                color:  rgb(78, 91, 99); 
+                color: teal; 
+            }
+            .link {
+                color: darkcyan;
+            }
+            .article_details {
+                margin-left: -40px;
             }
         </style>
 
@@ -63,19 +78,22 @@
         </div>
        {% for article in all_news %}
       <div class="row articles">
-        <div class="col-md-6 article_details">
+        <div class="col-md-6">
             <a href={{article.url}} target="_blank">
-                <img src={{article.urlToImage}} alt="Article Image..." class="img-fluid">
+                <img src={{article.urlToImage}} alt="Article Image..." class="responsive">
             </a>
         </div>
         <div class='col-md-6 article_details'>
                 <h4>
                     <a href={{article.url}}> {{article.title}} </a>
                 </h4>
+                <br>
                 <p id="date">Posted on: {{article.publishedAt}}</p>
+                <br>
                 <p>{{article.author}}</p>
+                <br>
                 <p>{{article.description}}
-                    <a href={{article.url}} target="_blank">Read More</a>
+                    <a href={{article.url}} target="_blank" class="link">Read More</a>
                 </p>
         </div>
                 
@@ -84,7 +102,6 @@
 
         {% endfor %}
 
-  </div>
  </body>
 </html>
 {% endblock %}
